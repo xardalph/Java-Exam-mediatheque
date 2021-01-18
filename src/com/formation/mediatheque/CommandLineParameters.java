@@ -2,6 +2,7 @@ package com.formation.mediatheque;
 
 import com.formation.mediatheque.Exceptions.ParameterException;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class CommandLineParameters {
@@ -10,12 +11,21 @@ public class CommandLineParameters {
     public static final String DB_FILE_KEY = "--db";
     public static final String LOG_KEY = "--log";
 
-    public final Map<String, String> parameters;
+    public final Map<String, String> parameters = new HashMap<String, String>();
 
 
     public CommandLineParameters(String[] args) {
-        //need to take every parameter to parameter property
-        this.parameters = null;
+        String lastKey = null;
+        for (String arg : args) {
+            if (arg != null && arg.startsWith("-")) {
+                lastKey = arg;
+                this.parameters.put(lastKey, "");
+                continue;
+            }
+            this.parameters.replace(lastKey, arg);
+        }
+
+
     }
 
     protected void assertParameterIsPresent(String key) throws ParameterException {
@@ -23,6 +33,13 @@ public class CommandLineParameters {
             throw new ParameterException(String.format("missing %s parameter", key));
 
         }
+    }
+
+    public static Map<String, String> parseCommand(String[] args) {
+        Map<String, String> result = new HashMap<>();
+
+
+        return result;
     }
 
 }
