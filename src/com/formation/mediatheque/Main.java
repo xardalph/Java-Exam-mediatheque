@@ -6,7 +6,24 @@ public class Main {
 	// write your code here
         System.out.println("hello World");
         CommandLineParameters Parameters = new CommandLineParameters(args);
-        System.out.println(Parameters.getParameters().get("--import") );
+        System.out.println(Parameters.getParameters().get(CommandLineParameters.IMPORT_KEY) );
+
+        if (Parameters.getParameters().get(CommandLineParameters.IMPORT_KEY) ) {
+
+            ImportData(Parameters);
+        }
+        else if (Parameters.getParameters().get(CommandLineParameters.EXPORT_KEY)){
+
+            ExportData(Parameters);
+        }
+
+    }
+
+
+    private static void ImportData(CommandLineParameters Parameters){
+
+    }
+    private static void ExportData(CommandLineParameters Parameters){
 
     }
 }
