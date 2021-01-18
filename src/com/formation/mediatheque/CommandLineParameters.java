@@ -12,8 +12,7 @@ public class CommandLineParameters {
 
 
     public CommandLineParameters(String[] args) {
-        //need to take every parameter to parameter property
+        // need to take every parameter to parameter property
         this.parameters = null;
     }
-
 }
