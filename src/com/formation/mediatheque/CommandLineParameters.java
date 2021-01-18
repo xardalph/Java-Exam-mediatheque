@@ -1,5 +1,7 @@
 package com.formation.mediatheque;
 
+import com.formation.mediatheque.Exceptions.ParameterException;
+
 import java.util.Map;
 
 public class CommandLineParameters {
@@ -12,7 +14,16 @@ public class CommandLineParameters {
 
 
     public CommandLineParameters(String[] args) {
-        // need to take every parameter to parameter property
+        //need to take every parameter to parameter property
         this.parameters = null;
     }
+
+    protected void assertParameterIsPresent(String key) throws ParameterException {
+        if (!parameters.containsKey(key) || parameters.get(key).length() > 1){
+            throw new ParameterException(String.format("missing %s parameter", key));
+
+        }
+    }
+
 }
+
