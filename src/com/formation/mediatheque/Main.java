@@ -22,6 +22,6 @@ Pourquoi 1 et 2 ? ont peux pas mettre des vrai options nommée ?
 Aucun moyen d'intéragir avec la base de données dans l'application ?
 pas d'outils pour emprunter un livre ou le rendre à faire ?
 
-
+Possible d'envoyer un repo github plutôt qu'une archive ?
 
  */
