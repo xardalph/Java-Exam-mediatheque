@@ -1,6 +1,6 @@
 package com.formation.mediatheque.abstraite;
 
-public class toto {
+public abstract class toto {
     private String reference;
     private String titre;
 
