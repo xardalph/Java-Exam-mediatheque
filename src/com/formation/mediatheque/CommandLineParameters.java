@@ -11,7 +11,7 @@ public class CommandLineParameters {
     public static final String DB_FILE_KEY = "--db";
     public static final String LOG_KEY = "--log";
 
-    public final Map<String, String> parameters = new HashMap<String, String>();
+    public final Map<String, String> parameters = new HashMap<>();
 
 
     public CommandLineParameters(String[] args) {
@@ -24,8 +24,10 @@ public class CommandLineParameters {
             }
             this.parameters.replace(lastKey, arg);
         }
+    }
 
-
+    public Map<String, String> getParameters() {
+        return parameters;
     }
 
     protected void assertParameterIsPresent(String key) throws ParameterException {
@@ -35,12 +37,7 @@ public class CommandLineParameters {
         }
     }
 
-    public static Map<String, String> parseCommand(String[] args) {
-        Map<String, String> result = new HashMap<>();
 
-
-        return result;
-    }
 
 }
 
