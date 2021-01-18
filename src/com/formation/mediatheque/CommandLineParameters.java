@@ -24,16 +24,29 @@ public class CommandLineParameters {
             }
             this.parameters.replace(lastKey, arg);
         }
+
+
     }
 
     public Map<String, String> getParameters() {
         return parameters;
     }
 
-    protected void assertParameterIsPresent(String key) throws ParameterException {
-        if (!parameters.containsKey(key) || parameters.get(key).length() > 1){
-            throw new ParameterException(String.format("missing %s parameter", key));
+    public boolean assertParametersAreValid() {
+        if (assertParameterIsPresent(DB_FILE_KEY) && assertParameterIsPresent(LOG_KEY) ){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
+    protected boolean assertParameterIsPresent(String key) {
+        if (parameters.containsKey(key) && parameters.get(key).length() > 1){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 
