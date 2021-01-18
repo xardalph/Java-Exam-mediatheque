@@ -2,7 +2,7 @@ package com.formation.mediatheque;
 
 import com.formation.mediatheque.abstraite.toto;
 
-public class Cd extends toto {
-    private String proCD1;
-    private String proCD2;
+public class Dvd extends toto {
+    private String proDVD1;
+    private String proDVD2;
 }
