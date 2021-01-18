@@ -1,6 +1,6 @@
 package com.formation.mediatheque.abstraite;
 
-public class empruntable {
+public abstract class empruntable {
     private boolean emprunte;
-    private boolean
+
 }
