@@ -4,6 +4,21 @@
 
 ///////////Je sais pas si c'est bon mais j'avais commencé ça hier du coup
 
+Alors, je ne pense pas que nous puissions faire une table Borrow car une clé étrangere ne peux pas pointer vers plusieurs tables
+hors nous avons des table différentes pour chaque entité
+2 options :
+ - mettre une table emprunter par type
+ - mettre la propriété emprunter dans les tables
+
+le problème de la seconde solution est que nous n'avons pas l'historique des emprunt, mais je ne pense pas qu'il soit nécessaire pour le projet,
+je vais commencer à l'implémenter comme ca
+
+D'un point de vue plus réaliste si j'avais fait cette application pour un vrai client j'aurait mis tous les cd/dvd dans une seule
+table avec une propriété pour définir le type je pense, du coup ont aurait pas eu ce pb, mais quand j'en
+ ai parlé avec lui il avait l'air motivé qu'on fasse une table par objets :/
+
+
+
 
 
 
@@ -39,7 +54,7 @@ CREATE TABLE livre (
     name varchar(100), 
     reference varchar(100), 
     authorName varchar(100), 
-    editeur varchar(100)
+    editor varchar(100)
     );
     
 CREATE TABLE magazine (

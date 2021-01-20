@@ -32,13 +32,16 @@ public class CommandLineParameters {
         return parameters;
     }
 
-    public boolean assertParametersAreValid() {
-        if (assertParameterIsPresent(DB_FILE_KEY) && assertParameterIsPresent(LOG_KEY) ){
-            return true;
+    public void assertParametersAreValid() throws ParameterException{
+        if (!assertParameterIsPresent(DB_FILE_KEY) || !assertParameterIsPresent(LOG_KEY) ){
+            throw new ParameterException("DB file AND log file are required");
         }
-        else{
-            return false;
+
+        if (assertParameterIsPresent(IMPORT_KEY) && assertParameterIsPresent(EXPORT_KEY)){
+            throw new ParameterException("You can't use --export and --import at the same time, remove one of them");
         }
+
+
     }
 
     protected boolean assertParameterIsPresent(String key) {

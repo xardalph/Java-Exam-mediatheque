@@ -1,6 +1,9 @@
 package com.formation.mediatheque;
 
+import com.formation.mediatheque.Exceptions.ParameterException;
+
 import static java.lang.System.exit;
+import static java.lang.System.setOut;
 
 public class Main {
 
@@ -9,12 +12,16 @@ public class Main {
         System.out.println("hello World");
 
         CommandLineParameters Parameters = new CommandLineParameters(args);
-        boolean toto = Parameters.assertParametersAreValid();
-        if (!Parameters.assertParametersAreValid())
-        {
-            System.out.println("Log parameter and db parameter are required.");
+
+        try{
+            Parameters.assertParametersAreValid();
+        }
+        catch (ParameterException e){
+            System.out.printf("Incorrect parameters : %s", e);
             exit(3);
         }
+
+
 
 
         if (Parameters.getParameters().containsKey(CommandLineParameters.IMPORT_KEY) ) {
@@ -41,14 +48,19 @@ public class Main {
 /*
 Qestions :
 C'est quoi les caractéritique propre à chaque objets ? ont met ce qu'on veux ?
-
+Ont met ce qu'on  veux
+ref et titre commun
 
 Pourquoi 1 et 2  pour l'import export ? ont peux pas mettre des vrai options nommée ?
-
+Oui MAIS à mettre dans le mail
 
 Aucun moyen d'intéragir avec la base de données dans l'application ?
 pas d'outils pour emprunter un livre ou le rendre à faire ?
+Rien d'autre à faire, il faut qu'on puisse importer plusieurs fois de suite les données (un id auto increment)
+
 
 Possible d'envoyer un repo github plutôt qu'une archive ?
+GitHub possible partager avec acigithub
+
 
  */
