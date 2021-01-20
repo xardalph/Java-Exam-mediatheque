@@ -28,8 +28,8 @@ public class CommandLineParameters {
 
     }
 
-    public Map<String, String> getParameters() {
-        return parameters;
+    public String getParameters(String key) {
+        return parameters.get(key);
     }
 
     public void assertParametersAreValid() throws ParameterException{
@@ -54,6 +54,8 @@ public class CommandLineParameters {
     }
 
 
-
+    public String getDbString() {
+        return "ttei";
+    }
 }
 

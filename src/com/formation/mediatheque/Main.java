@@ -2,28 +2,39 @@ package com.formation.mediatheque;
 
 import com.formation.mediatheque.Exceptions.ParameterException;
 
+import java.io.IOException;
+
 import static java.lang.System.exit;
 import static java.lang.System.setOut;
 
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        // write your code here
         System.out.println("hello World");
 
         CommandLineParameters Parameters = new CommandLineParameters(args);
 
-        try{
+        try {
             Parameters.assertParametersAreValid();
-        }
-        catch (ParameterException e){
+        } catch (ParameterException e) {
             System.out.printf("Incorrect parameters : %s", e);
             exit(3);
         }
 
 
+        try {
+            LogToFile logger = new LogToFile(Parameters.getParameters(CommandLineParameters.LOG_KEY));
+        }
+        catch(IOException e){
+            System.out.printf("Error openning file : %s", e);
+            exit(3);
+        }
+
+        //DBManager dbManager = new DBManager(Parameters.getDbString());
 
 
+/*
         if (Parameters.getParameters().containsKey(CommandLineParameters.IMPORT_KEY) ) {
 
             ImportData(Parameters);
@@ -33,13 +44,16 @@ public class Main {
             ExportData(Parameters);
         }
 
-    }
-
-
-    private static void ImportData(CommandLineParameters Parameters){
+ */
 
     }
-    private static void ExportData(CommandLineParameters Parameters){
+
+
+    private static void ImportData(CommandLineParameters Parameters) {
+
+    }
+
+    private static void ExportData(CommandLineParameters Parameters) {
 
     }
 }

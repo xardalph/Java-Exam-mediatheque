@@ -3,12 +3,16 @@ package com.formation.mediatheque;
 import java.sql.*;
 
 public class DBManager {
-    String url = "jdbc:mysql://localhost:3306/structures?useSSL=false";
+    String ConnexionString = "jdbc:mysql://localhost:3306/structures?useSSL=false";
     Connection connexion = null;
     Statement state = null;
     PreparedStatement ps =  null;
     ResultSet result = null;
 
+    public DBManager(String ConnexionString){
+        this.ConnexionString = ConnexionString;
+
+    }
 }
 
 /*
