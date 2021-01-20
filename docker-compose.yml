@@ -10,9 +10,9 @@ services:
       - mysql:/var/lib/mysql
     environment:
       - "MYSQL_ROOT_PASSWORD=root-pass"
-      - "MYSQL_DATABASE=test"
-      - "MYSQL_USER=test"
-      - "MYSQL_PASSWORD=test-pass"
+      - "MYSQL_DATABASE=Dev"
+      - "MYSQL_USER=dev"
+      - "MYSQL_PASSWORD=VerryGoodPasswordToUseInTestEnvironnement"
 
 volumes:
   mysql:
