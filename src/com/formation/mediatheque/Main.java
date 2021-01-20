@@ -1,11 +1,11 @@
 package com.formation.mediatheque;
 
+import com.formation.mediatheque.Exceptions.InvalidConfigurationFileException;
 import com.formation.mediatheque.Exceptions.ParameterException;
 
 import java.io.IOException;
 
 import static java.lang.System.exit;
-import static java.lang.System.setOut;
 
 public class Main {
 
@@ -17,19 +17,34 @@ public class Main {
 
         try {
             Parameters.assertParametersAreValid();
+            Parameters.GetConfiguration();
         } catch (ParameterException e) {
             System.out.printf("Incorrect parameters : %s", e);
+            exit(3);
+        } catch (IOException e){
+            System.out.printf("can't acces parameter file : %s", e);
+            exit(3);
+        } catch (InvalidConfigurationFileException e) {
+            System.out.printf("Invalid Configuration : %s", e);
             exit(3);
         }
 
 
         try {
             LogToFile logger = new LogToFile(Parameters.getParameters(CommandLineParameters.LOG_KEY));
+            DBManager dbManager = new DBManager(Parameters);
         }
         catch(IOException e){
             System.out.printf("Error openning file : %s", e);
             exit(3);
         }
+        catch(Exception e){
+            System.out.printf("UNKNOWN ERROR, please check : %s", e);
+            e.printStackTrace();
+            exit(3);
+        }
+
+
 
         //DBManager dbManager = new DBManager(Parameters.getDbString());
 
@@ -75,6 +90,5 @@ Rien d'autre à faire, il faut qu'on puisse importer plusieurs fois de suite les 
 
 Possible d'envoyer un repo github plutôt qu'une archive ?
 GitHub possible partager avec acigithub
-
-
+// TODO : A noter dans le mail : ont supporte les espaces dans les noms des fichiers, ca peux être un bon différenciateur si d'autres ne les gères pas correctement
  */
