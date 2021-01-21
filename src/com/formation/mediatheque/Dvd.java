@@ -1,8 +1,9 @@
 package com.formation.mediatheque;
 
+import com.formation.mediatheque.abstraite.Aempruntable;
 import com.formation.mediatheque.abstraite.toto;
 
-public class Dvd extends toto {
+public class Dvd extends Aempruntable {
     private String proDVD1;
     private String proDVD2;
 

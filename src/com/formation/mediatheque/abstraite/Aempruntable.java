@@ -1,5 +1,5 @@
 package com.formation.mediatheque.abstraite;
 
-public class empruntable {
+public abstract class Aempruntable extends toto{
     private boolean emprunte;
 }

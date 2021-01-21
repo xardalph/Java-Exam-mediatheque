@@ -1,8 +1,9 @@
 package com.formation.mediatheque;
 
-import com.formation.mediatheque.abstraite.toto;
+import com.formation.mediatheque.abstraite.Aempruntable;
 
-public class Cd extends toto {
+
+public class Cd extends Aempruntable {
     private String proCD1;
     private String proCD2;
 

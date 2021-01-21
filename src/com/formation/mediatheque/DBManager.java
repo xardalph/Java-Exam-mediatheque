@@ -26,12 +26,9 @@ public class DBManager {
         // est-ce qu'on fait une méthode pour créer la base de données ?
 
     }
-    public void create(toto object) throws SQLException, IllegalAccessException {
+    public void create(Dvd object) throws SQLException, IllegalAccessException {
 
-        Class clazz = object.getClass();
-        for (Field f : clazz.getFields()) {
-            System.out.printf("%s\t%s\n", f, f.get(object));
-        }
+        String toto = getPropertyNameList(object);
 
 
         String ClassName = object.getClass().getName();
@@ -41,6 +38,17 @@ public class DBManager {
 
     }
 
+    public String getPropertyNameList(Dvd instance) throws IllegalAccessException {
+        Class clazz = instance.getClass();
+        StringBuilder output = new StringBuilder();
+
+        for (Field f : instance.getClass().getDeclaredFields()) {
+            System.out.println(f.getName());
+            //System.out.println(f.get(instance));
+        }
+        return output.toString();
+
+    }
 
 
 }

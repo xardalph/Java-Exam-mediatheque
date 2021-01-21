@@ -28,11 +28,16 @@ public class Main {
             System.out.printf("Invalid Configuration : %s", e);
             exit(3);
         }
-
+        Dvd dvd = new Dvd();
+        dvd.setProDVD1("heibfue");
+        dvd.setProDVD2("heibfue");
+        dvd.setReference("gneigfberubfeu");
+        System.out.println(dvd.getReference());
 
         try {
             LogToFile logger = new LogToFile(Parameters.getParameters(CommandLineParameters.LOG_KEY));
             DBManager dbManager = new DBManager(Parameters);
+            dbManager.create(dvd);
         }
         catch(IOException e){
             System.out.printf("Error openning file : %s", e);
@@ -91,4 +96,11 @@ Rien d'autre à faire, il faut qu'on puisse importer plusieurs fois de suite les 
 Possible d'envoyer un repo github plutôt qu'une archive ?
 GitHub possible partager avec acigithub
 // TODO : A noter dans le mail : ont supporte les espaces dans les noms des fichiers, ca peux être un bon différenciateur si d'autres ne les gères pas correctement
+
+// TODO : DB manager générique
+// TODO : creation base
+// TODO : gitignore dbstring et logs docker-compose
+// TODO : Import export en json en parametre une liste d'objet qui hérite de toto, et le séréalize en json
+
+
  */
