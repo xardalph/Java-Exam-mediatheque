@@ -1,9 +1,12 @@
 package com.formation.mediatheque.DBManager;
 
+import com.formation.mediatheque.abstraite.commonEntity;
 import com.formation.mediatheque.utils.CommandLineParameters;
 import com.formation.mediatheque.data.Dvd;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.*;
 
 public class DBManager {
@@ -24,35 +27,33 @@ public class DBManager {
         state = connexion.createStatement();
         ResultSet result = state.executeQuery("SELECT * FROM secteur");
 
-        // est-ce qu'on fait une méthode pour créer la base de données ?
+        //est-ce qu'on fait une méthode pour créer la base de données ?
 
     }
-    public void create(Dvd object) throws SQLException, IllegalAccessException {
-
-        String toto = getPropertyNameList(object);
-
+    public void create(commonEntity object) throws SQLException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
         String ClassName = object.getClass().getName();
+        Method method = DBManager.class.getDeclaredMethod("create" + ClassName);
+        PreparedStatement Prepare = (PreparedStatement) method.invoke(object);
 
-        PreparedStatement Prepare = connexion.prepareStatement("INSERT INTO ? ()");
-        Prepare.setString(1, ClassName);
-
-    }
-
-    public String getPropertyNameList(Dvd instance) throws IllegalAccessException {
-        Class clazz = instance.getClass();
-        StringBuilder output = new StringBuilder();
-
-        for (Field f : instance.getClass().getDeclaredFields()) {
-            System.out.println(f.getName());
-            //System.out.println(f.get(instance));
-        }
-        return output.toString();
+        Prepare.executeQuery();
 
     }
+    protected PreparedStatement createDvd(Dvd object) throws SQLException {
+        PreparedStatement Prepare = connexion.prepareStatement("INSERT INTO dvd(titre,reference,genreFilm,prod) VALUES ('?','?','?','?')");
+        Prepare.setString(1, object.getTitre());
+        Prepare.setString(2, object.getReference());
+        Prepare.setString(3, object.getGenreFilm());
+        Prepare.setString(4, object.getProd());
+
+        return Prepare;
+//INSERT INTO dvd(titre,reference,genreFilm,prod) VALUES ("Rio","123AD123","Animation","CenturyFox");
+    }
 
 
-}
+
+
+            }
 
 /*
 

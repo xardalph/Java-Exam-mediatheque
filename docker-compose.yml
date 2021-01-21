@@ -13,6 +13,12 @@ services:
       - "MYSQL_DATABASE=Dev"
       - "MYSQL_USER=dev"
       - "MYSQL_PASSWORD=VerryGoodPasswordToUseInTestEnvironnement"
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "81:8080"
+
 
 volumes:
   mysql:
