@@ -1,6 +1,7 @@
-package com.formation.mediatheque;
+package com.formation.mediatheque.DBManager;
 
-import com.formation.mediatheque.abstraite.toto;
+import com.formation.mediatheque.utils.CommandLineParameters;
+import com.formation.mediatheque.data.Dvd;
 
 import java.lang.reflect.Field;
 import java.sql.*;

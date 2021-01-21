@@ -1,4 +1,4 @@
-package com.formation.mediatheque;
+package com.formation.mediatheque.utils;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;

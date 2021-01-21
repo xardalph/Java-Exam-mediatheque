@@ -1,8 +1,8 @@
-package com.formation.mediatheque;
+package com.formation.mediatheque.data;
 
-import com.formation.mediatheque.abstraite.toto;
+import com.formation.mediatheque.abstraite.Aempruntable;
 
-public class Livre extends toto {
+public class Livre extends Aempruntable {
     private String proLivre1;
     private String proLivre2;
 

@@ -2,6 +2,10 @@ package com.formation.mediatheque;
 
 import com.formation.mediatheque.Exceptions.InvalidConfigurationFileException;
 import com.formation.mediatheque.Exceptions.ParameterException;
+import com.formation.mediatheque.DBManager.DBManager;
+import com.formation.mediatheque.data.Dvd;
+import com.formation.mediatheque.utils.CommandLineParameters;
+import com.formation.mediatheque.utils.LogToFile;
 
 import java.io.IOException;
 

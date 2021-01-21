@@ -1,10 +1,9 @@
-package com.formation.mediatheque;
+package com.formation.mediatheque.utils;
 
 import com.formation.mediatheque.Exceptions.InvalidConfigurationFileException;
 import com.formation.mediatheque.Exceptions.ParameterException;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;

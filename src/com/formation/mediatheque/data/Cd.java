@@ -1,7 +1,6 @@
-package com.formation.mediatheque;
+package com.formation.mediatheque.data;
 
 import com.formation.mediatheque.abstraite.Aempruntable;
-
 
 public class Cd extends Aempruntable {
     private String proCD1;

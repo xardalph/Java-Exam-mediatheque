@@ -1,7 +1,6 @@
-package com.formation.mediatheque;
+package com.formation.mediatheque.data;
 
 import com.formation.mediatheque.abstraite.Aempruntable;
-import com.formation.mediatheque.abstraite.toto;
 
 public class Dvd extends Aempruntable {
     private String proDVD1;
