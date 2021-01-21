@@ -2,7 +2,9 @@ package com.formation.mediatheque.data;
 
 import com.formation.mediatheque.abstraite.Aempruntable;
 
-public class Livre extends Aempruntable {
+import java.io.Serializable;
+
+public class Livre extends Aempruntable implements Serializable {
     private String authorName;
     private String editor;
 

@@ -21,7 +21,6 @@ public class ImportExport implements Serializable {
 
         File file = new File(fileName);
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-        ObjectOutputStream out2 = new ObjectOutputStream(new FileOutputStream(fileName));
         Cd c = new Cd(name, reference, false, genreMusic, label);
         out.writeObject(c);
 

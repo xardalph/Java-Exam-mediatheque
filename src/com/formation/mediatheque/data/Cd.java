@@ -2,7 +2,9 @@ package com.formation.mediatheque.data;
 
 import com.formation.mediatheque.abstraite.Aempruntable;
 
-public class Cd extends Aempruntable {
+import java.io.Serializable;
+
+public class Cd extends Aempruntable implements Serializable {
     private String genreMusic;
     private String label;
 

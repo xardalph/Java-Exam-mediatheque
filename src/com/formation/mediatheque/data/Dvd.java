@@ -2,7 +2,9 @@ package com.formation.mediatheque.data;
 
 import com.formation.mediatheque.abstraite.Aempruntable;
 
-public class Dvd extends Aempruntable {
+import java.io.Serializable;
+
+public class Dvd extends Aempruntable implements Serializable {
     private String genreFilm;
     private String prod;
 

@@ -2,7 +2,9 @@ package com.formation.mediatheque.data;
 
 import com.formation.mediatheque.abstraite.commonEntity;
 
-public class Magazine extends commonEntity {
+import java.io.Serializable;
+
+public class Magazine extends commonEntity implements Serializable {
     private String marque;
     private String role;
 
