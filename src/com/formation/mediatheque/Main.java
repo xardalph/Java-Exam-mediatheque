@@ -3,6 +3,7 @@ package com.formation.mediatheque;
 import com.formation.mediatheque.Exceptions.InvalidConfigurationFileException;
 import com.formation.mediatheque.Exceptions.ParameterException;
 import com.formation.mediatheque.DBManager.DBManager;
+import com.formation.mediatheque.data.Cd;
 import com.formation.mediatheque.data.Dvd;
 import com.formation.mediatheque.utils.CommandLineParameters;
 import com.formation.mediatheque.utils.LogToFile;
@@ -32,10 +33,7 @@ public class Main {
             System.out.printf("Invalid Configuration : %s", e);
             exit(3);
         }
-        Dvd dvd = new Dvd();
-        dvd.setProDVD1("heibfue");
-        dvd.setProDVD2("heibfue");
-        dvd.setReference("gneigfberubfeu");
+        Dvd dvd = new Dvd("heise","heibfue",false,"gneigfberubfeu","gneigqsqaaaaaaaaaafeu");
         System.out.println(dvd.getReference());
 
         try {
@@ -85,26 +83,26 @@ public class Main {
 
 /*
 Qestions :
-C'est quoi les caractéritique propre à chaque objets ? ont met ce qu'on veux ?
+C'est quoi les caractï¿½ritique propre ï¿½ chaque objets ? ont met ce qu'on veux ?
 Ont met ce qu'on  veux
 ref et titre commun
 
-Pourquoi 1 et 2  pour l'import export ? ont peux pas mettre des vrai options nommée ?
-Oui MAIS à mettre dans le mail
+Pourquoi 1 et 2  pour l'import export ? ont peux pas mettre des vrai options nommï¿½e ?
+Oui MAIS ï¿½ mettre dans le mail
 
-Aucun moyen d'intéragir avec la base de données dans l'application ?
-pas d'outils pour emprunter un livre ou le rendre à faire ?
-Rien d'autre à faire, il faut qu'on puisse importer plusieurs fois de suite les données (un id auto increment)
+Aucun moyen d'intï¿½ragir avec la base de donnï¿½es dans l'application ?
+pas d'outils pour emprunter un livre ou le rendre ï¿½ faire ?
+Rien d'autre ï¿½ faire, il faut qu'on puisse importer plusieurs fois de suite les donnï¿½es (un id auto increment)
 
 
-Possible d'envoyer un repo github plutôt qu'une archive ?
+Possible d'envoyer un repo github plutï¿½t qu'une archive ?
 GitHub possible partager avec acigithub
-// TODO : A noter dans le mail : ont supporte les espaces dans les noms des fichiers, ca peux être un bon différenciateur si d'autres ne les gères pas correctement
+// TODO : A noter dans le mail : ont supporte les espaces dans les noms des fichiers, ca peux ï¿½tre un bon diffï¿½renciateur si d'autres ne les gï¿½res pas correctement
 
-// TODO : DB manager générique
+// TODO : DB manager gï¿½nï¿½rique
 // TODO : creation base
 // TODO : gitignore dbstring et logs docker-compose
-// TODO : Import export en json en parametre une liste d'objet qui hérite de toto, et le séréalize en json
+// TODO : Import export en json en parametre une liste d'objet qui hï¿½rite de toto, et le sï¿½rï¿½alize en json
 
 
  */

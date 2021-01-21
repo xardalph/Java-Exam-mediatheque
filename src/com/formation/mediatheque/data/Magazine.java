@@ -3,17 +3,21 @@ package com.formation.mediatheque.data;
 import com.formation.mediatheque.abstraite.commonEntity;
 
 public class Magazine extends commonEntity {
-    private String titre;
+    private String marque;
     private String role;
 
-    @Override
-    public String getTitre() {
-        return titre;
+    public Magazine(String reference, String titre, String marque, String role) {
+        super(reference, titre);
+        this.marque = marque;
+        this.role = role;
     }
 
-    @Override
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public String getMarque() {
+        return marque;
+    }
+
+    public void setMarque(String marque) {
+        this.marque = marque;
     }
 
     public String getRole() {

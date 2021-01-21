@@ -6,6 +6,12 @@ public class Livre extends Aempruntable {
     private String authorName;
     private String editor;
 
+    public Livre(String reference, String titre, boolean borrow, String authorName, String editor) {
+        super(reference, titre, borrow);
+        this.authorName = authorName;
+        this.editor = editor;
+    }
+
     public String getAuthorName() {
         return authorName;
     }

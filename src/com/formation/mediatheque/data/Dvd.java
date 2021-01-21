@@ -6,6 +6,11 @@ public class Dvd extends Aempruntable {
     private String genreFilm;
     private String prod;
 
+    public Dvd(String reference, String titre, boolean borrow, String genreFilm, String prod) {
+        super(reference, titre, borrow);
+        this.genreFilm = genreFilm;
+        this.prod = prod;
+    }
 
     public String getGenreFilm() {
         return genreFilm;
