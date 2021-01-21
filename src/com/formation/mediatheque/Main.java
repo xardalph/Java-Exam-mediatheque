@@ -83,26 +83,26 @@ public class Main {
 
 /*
 Qestions :
-C'est quoi les caract�ritique propre � chaque objets ? ont met ce qu'on veux ?
+C'est quoi les caractéritique propre à chaque objets ? ont met ce qu'on veux ?
 Ont met ce qu'on  veux
 ref et titre commun
 
-Pourquoi 1 et 2  pour l'import export ? ont peux pas mettre des vrai options nomm�e ?
-Oui MAIS � mettre dans le mail
+Pourquoi 1 et 2  pour l'import export ? ont peux pas mettre des vrai options nommée ?
+Oui MAIS à mettre dans le mail
 
-Aucun moyen d'int�ragir avec la base de donn�es dans l'application ?
-pas d'outils pour emprunter un livre ou le rendre � faire ?
-Rien d'autre � faire, il faut qu'on puisse importer plusieurs fois de suite les donn�es (un id auto increment)
+Aucun moyen d'intéragir avec la base de données dans l'application ?
+pas d'outils pour emprunter un livre ou le rendre à faire ?
+Rien d'autre à faire, il faut qu'on puisse importer plusieurs fois de suite les données (un id auto increment)
 
 
-Possible d'envoyer un repo github plut�t qu'une archive ?
+Possible d'envoyer un repo github plutôt qu'une archive ?
 GitHub possible partager avec acigithub
-// TODO : A noter dans le mail : ont supporte les espaces dans les noms des fichiers, ca peux �tre un bon diff�renciateur si d'autres ne les g�res pas correctement
+// TODO : A noter dans le mail : ont supporte les espaces dans les noms des fichiers, ca peux être un bon différenciateur si d'autres ne les gères pas correctement
 
-// TODO : DB manager g�n�rique
+// TODO : DB manager générique
 // TODO : creation base
 // TODO : gitignore dbstring et logs docker-compose
-// TODO : Import export en json en parametre une liste d'objet qui h�rite de toto, et le s�r�alize en json
+// TODO : Import export en json en parametre une liste d'objet qui hérite de toto, et le séréalize en json
 
 
  */
