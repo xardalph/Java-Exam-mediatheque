@@ -32,6 +32,17 @@ public class Cd extends Aempruntable implements Serializable {
     public void setLabel(String label) {
         this.label = label;
     }
+
+    @Override
+    public String toString() {
+        return "Cd{" +
+                "borrow=" + borrow +
+                ", reference='" + reference + '\'' +
+                ", titre='" + titre + '\'' +
+                ", genreMusic='" + genreMusic + '\'' +
+                ", label='" + label + '\'' +
+                '}';
+    }
 }
 
 

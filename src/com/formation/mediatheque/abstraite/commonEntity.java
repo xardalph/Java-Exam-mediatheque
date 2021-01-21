@@ -1,8 +1,10 @@
 package com.formation.mediatheque.abstraite;
 
-public abstract class commonEntity {
-    private String reference;
-    public String titre;
+import java.io.Serializable;
+
+public abstract class commonEntity implements Serializable {
+    protected String reference;
+    protected String titre;
 
     public commonEntity(String reference, String titre) {
         this.reference = reference;
@@ -24,4 +26,5 @@ public abstract class commonEntity {
     public void setTitre(String titre) {
         this.titre = titre;
     }
+
 }
