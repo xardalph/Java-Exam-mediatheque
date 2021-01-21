@@ -25,23 +25,24 @@ public class ImportExport {
         //Serialization
         File file = new File(fileName);
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-        Cd c = new Cd("gfbeui", "fbiebfie", false, "fnei", "feinbfi");
+        Cd c = new Cd(name, reference, false, genreMusic, label);
         out.writeObject(c);
         out.close();
 
         //Deserialization
         File file2 =  new File(fileName);
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName));
-        String teaiti = "gneinbfie";
         Object o =  in.readObject();
-
-        String toto = "fnienbfie";
+        
         Cd c2 = null;
         if (o instanceof Cd) {
             c2 = (Cd) o;
             System.out.println(c2.toString());
         }
         in.close();
+
+        //Cd c2 = (Cd)in.readObject() ;
+        //System.out.println(c2) ;
 
         
     }

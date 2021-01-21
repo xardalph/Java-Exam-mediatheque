@@ -29,4 +29,15 @@ public class Dvd extends Aempruntable implements Serializable {
     public void setProd(String prod) {
         this.prod = prod;
     }
+
+    @Override
+    public String toString() {
+        return "Dvd{" +
+                "genreFilm='" + genreFilm + '\'' +
+                ", prod='" + prod + '\'' +
+                ", borrow=" + borrow +
+                ", reference='" + reference + '\'' +
+                ", titre='" + titre + '\'' +
+                '}';
+    }
 }

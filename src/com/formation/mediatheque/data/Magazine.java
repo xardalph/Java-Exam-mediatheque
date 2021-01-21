@@ -29,4 +29,14 @@ public class Magazine extends commonEntity implements Serializable {
     public void setRole(String role) {
         this.role = role;
     }
+
+    @Override
+    public String toString() {
+        return "Magazine{" +
+                "marque='" + marque + '\'' +
+                ", role='" + role + '\'' +
+                ", reference='" + reference + '\'' +
+                ", titre='" + titre + '\'' +
+                '}';
+    }
 }
