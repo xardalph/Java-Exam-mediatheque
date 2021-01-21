@@ -39,6 +39,7 @@ CREATE TABLE cd (
     reference varchar(100), 
     genreMusic varchar(100), 
     label varchar(100),
+    borrow boolean
     );
     
 CREATE TABLE dvd (
@@ -47,6 +48,7 @@ CREATE TABLE dvd (
     reference varchar(100), 
     genreFilm varchar(100), 
     prod varchar(100),
+    borrow boolean
     );
     
 CREATE TABLE livre (
@@ -54,7 +56,8 @@ CREATE TABLE livre (
     name varchar(100), 
     reference varchar(100), 
     authorName varchar(100), 
-    editor varchar(100)
+    editor varchar(100),
+    borrow boolean
     );
     
 CREATE TABLE magazine (
@@ -78,8 +81,8 @@ INSERT INTO dvd(name,reference,genreFilm,prod) VALUES ("Desenchante","123AF123",
 
 INSERT INTO livre(name,reference,authorName,editeur) VALUES ("Livre1","123AG123","Author1","fantastique");
 INSERT INTO livre(name,reference,authorName,editeur) VALUES ("Livre2","123AH123","Author2","pasfantastique");
-INSERT INTO livre(name,reference,authorName,editeur) VALUES ("Livre3","123AJ123","Author3","drole");
+INSERT INTO livre(name,reference,authorName,editeur) VALUES ("Livre3","123AI123","Author3","drole");
 
-INSERT INTO magazine(name,reference,titre,role) VALUES ("AutoMoto","123EG123","Vivelesmotos","documentaire");
-INSERT INTO magazine(name,reference,titre,role) VALUES ("AutoMoto","123EG123","Vivelesmotos","documentaire");
-INSERT INTO magazine(name,reference,titre,role) VALUES ("AutoMoto","123EG123","Vivelesmotos","documentaire");
+INSERT INTO magazine(name,reference,titre,role) VALUES ("AutoMoto","123AJ123","Vivelesmotos","documentaire");
+INSERT INTO magazine(name,reference,titre,role) VALUES ("AutoMoto2","123AK123","Vivelesmotos2","fiction");
+INSERT INTO magazine(name,reference,titre,role) VALUES ("AutoMoto3","123AL123","Vivelesmotos3","reel");

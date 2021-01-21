@@ -20,5 +20,6 @@ public class LogToFile {
         Log = logger;
         Log.info("Openning Log File.");
 
+
     }
 }
