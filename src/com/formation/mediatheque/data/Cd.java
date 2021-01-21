@@ -5,6 +5,9 @@ import com.formation.mediatheque.abstraite.Aempruntable;
 import java.io.Serializable;
 
 public class Cd extends Aempruntable implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private String genreMusic;
     private String label;
 
