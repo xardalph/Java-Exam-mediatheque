@@ -1,8 +1,8 @@
 package com.formation.mediatheque.data;
 
-import com.formation.mediatheque.abstraite.toto;
+import com.formation.mediatheque.abstraite.commonEntity;
 
-public class Magazine extends toto {
+public class Magazine extends commonEntity {
     private String titre;
     private String role;
 

@@ -1,6 +1,6 @@
 package com.formation.mediatheque.abstraite;
 
-public abstract class toto {
+public abstract class commonEntity {
     private String reference;
     public String titre;
 
