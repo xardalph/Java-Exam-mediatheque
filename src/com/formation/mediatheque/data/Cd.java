@@ -3,23 +3,23 @@ package com.formation.mediatheque.data;
 import com.formation.mediatheque.abstraite.Aempruntable;
 
 public class Cd extends Aempruntable {
-    private String proCD1;
-    private String proCD2;
+    private String genreMusic;
+    private String label;
 
-    public String getProCD1() {
-        return proCD1;
+    public String getgenreMusic() {
+        return genreMusic;
     }
 
-    public void setProCD1(String proCD1) {
-        this.proCD1 = proCD1;
+    public void setgenreMusic(String genreMusic) {
+        this.genreMusic = genreMusic;
     }
 
-    public String getProCD2() {
-        return proCD2;
+    public String label() {
+        return label;
     }
 
-    public void setProCD2(String proCD2) {
-        this.proCD2 = proCD2;
+    public void label(String proCD2) {
+        this.label = label;
     }
 }
 

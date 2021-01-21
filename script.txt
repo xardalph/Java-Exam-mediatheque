@@ -29,13 +29,13 @@ notes
 
 CREATE TABLE borrow (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
-    name varchar(100), 
+    titre varchar(100),
     reference varchar(100),
     );
     
 CREATE TABLE cd (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
-    name varchar(100), 
+    titre varchar(100),
     reference varchar(100), 
     genreMusic varchar(100), 
     label varchar(100),
@@ -44,7 +44,7 @@ CREATE TABLE cd (
     
 CREATE TABLE dvd (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
-    name varchar(100), 
+    titre varchar(100),
     reference varchar(100), 
     genreFilm varchar(100), 
     prod varchar(100),
@@ -53,7 +53,7 @@ CREATE TABLE dvd (
     
 CREATE TABLE livre (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
-    name varchar(100), 
+    titre varchar(100),
     reference varchar(100), 
     authorName varchar(100), 
     editor varchar(100),
@@ -62,7 +62,7 @@ CREATE TABLE livre (
     
 CREATE TABLE magazine (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
-    name varchar(100), 
+    titre varchar(100),
     reference varchar(100), 
     titre varchar(100), 
     role varchar(100)
