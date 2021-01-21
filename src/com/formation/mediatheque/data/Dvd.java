@@ -7,19 +7,19 @@ public class Dvd extends Aempruntable {
     private String prod;
 
 
-    public String getgenreFilm() {
+    public String getGenreFilm() {
         return genreFilm;
     }
 
-    public void setgenreFilm(String genreFilm) {
+    public void setGenreFilm(String genreFilm) {
         this.genreFilm = genreFilm;
     }
 
-    public String getprod() {
+    public String getProd() {
         return prod;
     }
 
-    public void setprod(String prod) {
+    public void setProd(String prod) {
         this.prod = prod;
     }
 }

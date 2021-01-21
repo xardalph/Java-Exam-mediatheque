@@ -6,19 +6,19 @@ public class Cd extends Aempruntable {
     private String genreMusic;
     private String label;
 
-    public String getgenreMusic() {
+    public String getGenreMusic() {
         return genreMusic;
     }
 
-    public void setgenreMusic(String genreMusic) {
+    public void setGenreMusic(String genreMusic) {
         this.genreMusic = genreMusic;
     }
 
-    public String label() {
+    public String getLabel() {
         return label;
     }
 
-    public void label(String proCD2) {
+    public void setLabel(String label) {
         this.label = label;
     }
 }

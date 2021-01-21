@@ -6,19 +6,19 @@ public class Livre extends Aempruntable {
     private String authorName;
     private String editor;
 
-    public String getauthorName() {
+    public String getAuthorName() {
         return authorName;
     }
 
-    public void setauthorName(String authorName) {
+    public void setAuthorName(String authorName) {
         this.authorName = authorName;
     }
 
-    public String geteditor() {
+    public String getEditor() {
         return editor;
     }
 
-    public void seteditor(String editor) {
+    public void setEditor(String editor) {
         this.editor = editor;
     }
 }
