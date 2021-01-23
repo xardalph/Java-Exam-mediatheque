@@ -84,17 +84,45 @@ public class DBManager {
 
         List<String> ListMethod = Tables.get(ClassName);
         Class c = object.getClass();
-        Method method = c.getDeclaredMethod("getReference");
+
+        StringBuilder sqlCreate = new StringBuilder();
+        sqlCreate.append("INSERT INTO ");
+        sqlCreate.append(ClassName);
+        sqlCreate.append(" (");
+
+        for (String column : ListMethod){
+            sqlCreate.append(column + ", ");
+        }
+        sqlCreate.append(") VALUES (?,?,?,?,?) ");
+        String CreateStatement = sqlCreate.toString();
+        PreparedStatement Prepare = connexion.prepareStatement(CreateStatement);
+        String paramValue;
+        for (int i = 0; i < ListMethod.size(); i++){
+            String MethodName = "get" + ucfirst(ListMethod.get(i));
+            Method method = c.getMethod(MethodName);
+
+            paramValue = (String) method.invoke(object);
+            Prepare.setString(i, paramValue);
+        }
+
+
+        Method[] methods = c.getMethods();
+
+        Method method = c.getMethod("getReference");
+
+        String tata = (String) method.invoke(object);
 
 
         //Method method = DBManager.class.getDeclaredMethod("create" + ClassName);
 
         //PreparedStatement Prepare = (PreparedStatement) method.invoke(object);
 
-        Prepare.executeQuery();
+       // Prepare.executeQuery();
 
     }
-
+    private static String ucfirst(String chaine){
+        return chaine.substring(0, 1).toUpperCase()+ chaine.substring(1).toLowerCase();
+    }
     public PreparedStatement createDvd(Dvd object) throws SQLException {
         PreparedStatement Prepare = connexion.prepareStatement("INSERT INTO dvd(titre,reference,genreFilm,prod) VALUES ('?','?','?','?')");
         Prepare.setString(1, object.getTitre());
