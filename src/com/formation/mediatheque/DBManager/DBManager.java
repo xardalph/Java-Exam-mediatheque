@@ -9,20 +9,66 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class DBManager {
     String ConnexionString = "jdbc:mysql://localhost:3306/structures?useSSL=false";
     Connection connexion = null;
     Statement state = null;
-
+    Map<String, List<String>> Tables = new HashMap<String, List<String>>();
 
     public DBManager(CommandLineParameters parameters) throws SQLException {
+
+        InitializeTables();
 
         this.connexion = DriverManager.getConnection(
                 parameters.getParameters(CommandLineParameters.DB_URL_KEY),
                 parameters.getParameters(CommandLineParameters.DB_USER_KEY),
                 parameters.getParameters(CommandLineParameters.DB_PASSWORD_KEY)
         );
+
+        state = connexion.createStatement();
+        ResultSet result = state.executeQuery("SELECT * FROM dvd");
     }
+
+    private void InitializeTables() {
+        ArrayList<String> cd =  new ArrayList<String>();
+        cd.add("titre");
+        cd.add("reference");
+        cd.add("genreMusic");
+        cd.add("label");
+        cd.add("borrow");
+        Tables.put("Cd", cd);
+
+        ArrayList<String> dvd =  new ArrayList<String>();
+        dvd.add("titre");
+        dvd.add("reference");
+        dvd.add("genreFilm");
+        dvd.add("prod");
+        dvd.add("borrow");
+
+        ArrayList<String> livre =  new ArrayList<String>();
+        livre.add("titre");
+        livre.add("reference");
+        livre.add("authorName");
+        livre.add("editor");
+        livre.add("borrow");
+
+        ArrayList<String> magazine =  new ArrayList<String>();
+        magazine.add("titre");
+        magazine.add("reference");
+        magazine.add("marque");
+        magazine.add("role");
+
+        Tables.put("Cd", cd);
+        Tables.put("Dvd", dvd);
+        Tables.put("Livre", livre);
+        Tables.put("magazine", magazine);
+    }
+
     public void Initialize() throws SQLException {
         state = connexion.createStatement();
         ResultSet result = state.executeQuery("SELECT * FROM secteur");
@@ -30,16 +76,26 @@ public class DBManager {
         //est-ce qu'on fait une méthode pour créer la base de données ?
 
     }
+
     public void create(commonEntity object) throws SQLException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        String ClassName = object.getClass().getName();
-        Method method = DBManager.class.getDeclaredMethod("create" + ClassName);
-        PreparedStatement Prepare = (PreparedStatement) method.invoke(object);
+        String[] ClassFullName = object.getClass().getName().split("\\.");
+        String ClassName = ClassFullName[ClassFullName.length - 1];
+
+        List<String> ListMethod = Tables.get(ClassName);
+        Class c = object.getClass();
+        Method method = c.getDeclaredMethod("getReference");
+
+
+        //Method method = DBManager.class.getDeclaredMethod("create" + ClassName);
+
+        //PreparedStatement Prepare = (PreparedStatement) method.invoke(object);
 
         Prepare.executeQuery();
 
     }
-    protected PreparedStatement createDvd(Dvd object) throws SQLException {
+
+    public PreparedStatement createDvd(Dvd object) throws SQLException {
         PreparedStatement Prepare = connexion.prepareStatement("INSERT INTO dvd(titre,reference,genreFilm,prod) VALUES ('?','?','?','?')");
         Prepare.setString(1, object.getTitre());
         Prepare.setString(2, object.getReference());
@@ -51,9 +107,7 @@ public class DBManager {
     }
 
 
-
-
-            }
+}
 
 /*
 
