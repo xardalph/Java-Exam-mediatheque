@@ -2,9 +2,7 @@ package com.formation.mediatheque.DBManager;
 
 import com.formation.mediatheque.abstraite.commonEntity;
 import com.formation.mediatheque.utils.CommandLineParameters;
-import com.formation.mediatheque.data.Dvd;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.*;
@@ -16,9 +14,9 @@ import java.util.Map;
 
 public class DBManager {
     String ConnexionString = "jdbc:mysql://localhost:3306/structures?useSSL=false";
-    Connection connexion = null;
-    Statement state = null;
-    Map<String, List<String>> Tables = new HashMap<String, List<String>>();
+    Connection connexion;
+    Statement state;
+    Map<String, List<String>> Tables = new HashMap<>();
 
     public DBManager(CommandLineParameters parameters) throws SQLException {
 
@@ -29,13 +27,10 @@ public class DBManager {
                 parameters.getParameters(CommandLineParameters.DB_USER_KEY),
                 parameters.getParameters(CommandLineParameters.DB_PASSWORD_KEY)
         );
-
-        state = connexion.createStatement();
-        ResultSet result = state.executeQuery("SELECT * FROM dvd");
     }
 
     private void InitializeTables() {
-        ArrayList<String> cd =  new ArrayList<String>();
+        ArrayList<String> cd = new ArrayList<>();
         cd.add("titre");
         cd.add("reference");
         cd.add("genreMusic");
@@ -43,21 +38,21 @@ public class DBManager {
         cd.add("borrow");
         Tables.put("Cd", cd);
 
-        ArrayList<String> dvd =  new ArrayList<String>();
+        ArrayList<String> dvd =  new ArrayList<>();
         dvd.add("titre");
         dvd.add("reference");
         dvd.add("genreFilm");
         dvd.add("prod");
         dvd.add("borrow");
 
-        ArrayList<String> livre =  new ArrayList<String>();
+        ArrayList<String> livre =  new ArrayList<>();
         livre.add("titre");
         livre.add("reference");
         livre.add("authorName");
         livre.add("editor");
         livre.add("borrow");
 
-        ArrayList<String> magazine =  new ArrayList<String>();
+        ArrayList<String> magazine =  new ArrayList<>();
         magazine.add("titre");
         magazine.add("reference");
         magazine.add("marque");
@@ -71,7 +66,7 @@ public class DBManager {
 
     public void Initialize() throws SQLException {
         state = connexion.createStatement();
-        ResultSet result = state.executeQuery("SELECT * FROM secteur");
+        //ResultSet result = state.executeQuery("SELECT * FROM cd");
 
         //est-ce qu'on fait une méthode pour créer la base de données ?
 
@@ -89,30 +84,27 @@ public class DBManager {
         sqlCreate.append("INSERT INTO ");
         sqlCreate.append(ClassName);
         sqlCreate.append(" (");
+        sqlCreate.append(String.join(", ", ListMethod) );
 
-        for (String column : ListMethod){
-            sqlCreate.append(column + ", ");
-        }
         sqlCreate.append(") VALUES (?,?,?,?,?) ");
         String CreateStatement = sqlCreate.toString();
         PreparedStatement Prepare = connexion.prepareStatement(CreateStatement);
-        String paramValue;
+
         for (int i = 0; i < ListMethod.size(); i++){
             String MethodName = "get" + ucfirst(ListMethod.get(i));
             Method method = c.getMethod(MethodName);
 
-            paramValue = (String) method.invoke(object);
-            Prepare.setString(i, paramValue);
+            if (MethodName.equals("getBorrow")){
+                Prepare.setString(i+1, String.valueOf(method.invoke(object)));
+            }
+            else{
+                Prepare.setString(i+1, (String)method.invoke(object) );
+
+            }
+
         }
-
-
-        Method[] methods = c.getMethods();
-
-        Method method = c.getMethod("getReference");
-
-        String tata = (String) method.invoke(object);
-
-
+        String toto = Prepare.toString();
+        Prepare.executeQuery();
         //Method method = DBManager.class.getDeclaredMethod("create" + ClassName);
 
         //PreparedStatement Prepare = (PreparedStatement) method.invoke(object);
@@ -121,9 +113,9 @@ public class DBManager {
 
     }
     private static String ucfirst(String chaine){
-        return chaine.substring(0, 1).toUpperCase()+ chaine.substring(1).toLowerCase();
+        return chaine.substring(0, 1).toUpperCase()+ chaine.substring(1);
     }
-    public PreparedStatement createDvd(Dvd object) throws SQLException {
+/*  public PreparedStatement createDvd(Dvd object) throws SQLException {
         PreparedStatement Prepare = connexion.prepareStatement("INSERT INTO dvd(titre,reference,genreFilm,prod) VALUES ('?','?','?','?')");
         Prepare.setString(1, object.getTitre());
         Prepare.setString(2, object.getReference());
@@ -131,8 +123,9 @@ public class DBManager {
         Prepare.setString(4, object.getProd());
 
         return Prepare;
-//INSERT INTO dvd(titre,reference,genreFilm,prod) VALUES ("Rio","123AD123","Animation","CenturyFox");
-    }
+INSERT INTO dvd(titre,reference,genreFilm,prod) VALUES ("Rio","123AD123","Animation","CenturyFox");
+    }*/
+
 
 
 }
