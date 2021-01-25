@@ -95,7 +95,7 @@ Possible d'envoyer un repo github plutôt qu'une archive ?
 GitHub possible partager avec acigithub
 // TODO : A noter dans le mail : ont supporte les espaces dans les noms des fichiers, ca peux être un bon différenciateur si d'autres ne les gères pas correctement. Base de données mariadb et pas oracle ou ms
 
-// TODO : DB manager générique -> DONE
+// TODO : DB manager générique -> DONE pour le create (est-ce que le reste est nécessaire ?)
 // TODO : creation base -> Done, le script fonctionne sur un mariadb
 // TODO : gitignore dbstring et logs docker-compose
 // TODO : Import export en json en parametre une liste d'objet qui hérite de toto, et le séréalize en json

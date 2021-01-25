@@ -29,4 +29,15 @@ public class Livre extends Aempruntable implements Serializable {
     public void setEditor(String editor) {
         this.editor = editor;
     }
+
+    @Override
+    public String toString() {
+        return "Livre{" +
+                "borrow=" + borrow +
+                ", reference='" + reference + '\'' +
+                ", titre='" + titre + '\'' +
+                ", authorName='" + authorName + '\'' +
+                ", editor='" + editor + '\'' +
+                '}';
+    }
 }
