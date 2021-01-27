@@ -18,6 +18,24 @@ import java.util.Vector;
 
 public class ImportExport {
 
+
+    public static Vector<commonEntity> importFromFile(String fileName) throws IOException, ClassNotFoundException {
+        ObjectInputStream in2 = new ObjectInputStream(
+                Files.newInputStream(Paths.get(fileName+"2.txt"), StandardOpenOption.READ));
+
+        Vector<commonEntity> fileContent = (Vector<commonEntity>)in2.readObject();
+        return fileContent;
+    }
+
+    public static void exportToFile(String fileName, Vector<commonEntity> commonEntityList) throws IOException, ClassNotFoundException {
+        ObjectOutputStream out2 = new ObjectOutputStream(
+                Files.newOutputStream(Paths.get(fileName), StandardOpenOption.CREATE));
+
+        out2.writeObject(commonEntityList);
+        out2.close();
+
+    }
+
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
         String name, reference, genreMusic, label, fileName;
         name = "XEU";
@@ -25,30 +43,6 @@ public class ImportExport {
         genreMusic = "Rap";
         label = "CapitolRecords";
         fileName = "./test";
-
-        /*
-        //Serialization
-        File file = new File(fileName);
-        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-        Cd c = new Cd(name, reference, false, genreMusic, label);
-        out.writeObject(c);
-        out.close();
-
-        //Deserialization
-        File file2 =  new File(fileName);
-        ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName));
-        Object o =  in.readObject();
-
-        Cd c2 = null;
-        if (o instanceof Cd) {
-            c2 = (Cd) o;
-            System.out.println(c2.toString());
-        }
-        in.close();
-
-        //Cd c2 = (Cd)in.readObject() ;
-        //System.out.println(c2) ;
-        */
 
         Cd c = new Cd(name, reference, false, genreMusic, label);
         Cd c1 = new Cd(reference+"1", name+"1", false, genreMusic+"1", label+"1");
@@ -69,12 +63,6 @@ public class ImportExport {
                 Files.newOutputStream(Paths.get(fileName+"2.txt"), StandardOpenOption.CREATE));
 
         Vector<commonEntity> v = new Vector<commonEntity>();
-        /*
-        foreach Cd in
-        foreach Dvd in
-        foreach Magazine in
-        foreach Livre in
-        */
 
         v.add(c);
         v.add(c1);
@@ -94,8 +82,8 @@ public class ImportExport {
         ObjectInputStream in2 = new ObjectInputStream(
                 Files.newInputStream(Paths.get(fileName+"2.txt"), StandardOpenOption.READ));
 
-        v = (Vector<commonEntity>)in2.readObject();
-        System.out.println(v);
+        Vector<commonEntity> input = (Vector<commonEntity>)in2.readObject();
+        System.out.println(input);
         in2.close();
 
     }

@@ -69,9 +69,6 @@ public class DBManager {
         PreparedStatement Prepare = addAllParameter(SqlStatement, object);
 
         Prepare.executeQuery();
-
-
-
     }
 
 
@@ -116,7 +113,6 @@ public class DBManager {
         }
         return Prepare;
     }
-
 
     private void InitializeTables() {
         ArrayList<String> cd = new ArrayList<>();
