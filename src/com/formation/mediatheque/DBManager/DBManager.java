@@ -41,10 +41,35 @@ public class DBManager {
         sqlCreate.append(ListMethodString);
 
         sqlCreate.append(") VALUES (?,?,?,?,?) ");
-        String CreateStatement = sqlCreate.toString();
+        String SqlStatement = sqlCreate.toString();
 
-        PreparedStatement Prepare = addAllParameter(CreateStatement, object);
+        PreparedStatement Prepare = addAllParameter(SqlStatement, object);
         Prepare.executeQuery();
+
+
+    }
+    public void update(int updateID, commonEntity object) throws SQLException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+
+        List<String> ListMethodString =  getListMethod(object);
+        List<String> listMethodStringUpdate = new ArrayList<>();
+
+        for(int i = 0; i < ListMethodString.size(); i++){
+             listMethodStringUpdate.add(i, ListMethodString.get(i) + " = ? ");
+        }
+
+        StringBuilder sqlUpdate = new StringBuilder();
+        sqlUpdate.append("UPDATE ");
+        sqlUpdate.append(getClassName(object));
+        sqlUpdate.append(" SET ");
+        sqlUpdate.append(String.join(", ", listMethodStringUpdate));
+        sqlUpdate.append("WHERE id = ").append(updateID);
+
+        String SqlStatement = sqlUpdate.toString();
+
+        PreparedStatement Prepare = addAllParameter(SqlStatement, object);
+
+        Prepare.executeQuery();
+
 
 
     }

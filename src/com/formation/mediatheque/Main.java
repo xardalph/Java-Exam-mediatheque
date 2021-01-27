@@ -33,13 +33,14 @@ public class Main {
             System.out.printf("Invalid Configuration : %s", e);
             exit(3);
         }
-        Dvd dvd = new Dvd("Reference","titre",true,"genreFilm","prod");
+        Dvd dvd = new Dvd("Reference","titre",false,"genreFilm","production");
         System.out.println(dvd.getReference());
 
         try {
             LogToFile logger = new LogToFile(Parameters.getParameters(CommandLineParameters.LOG_KEY));
             DBManager dbManager = new DBManager(Parameters);
             dbManager.create(dvd);
+            dbManager.update(10, dvd);
         }
         catch(IOException e){
             System.out.printf("Error openning file : %s", e);
