@@ -1,21 +1,17 @@
 package com.formation.mediatheque.DBManager;
 
 import com.formation.mediatheque.abstraite.commonEntity;
+import com.formation.mediatheque.data.Dvd;
 import com.formation.mediatheque.utils.CommandLineParameters;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DBManager {
-    String ConnexionString = "jdbc:mysql://localhost:3306/structures?useSSL=false";
     Connection connexion;
-    Statement state;
     Map<String, List<String>> Tables = new HashMap<>();
 
     public DBManager(CommandLineParameters parameters) throws SQLException {
@@ -48,6 +44,25 @@ public class DBManager {
 
 
     }
+    public void getAllDvd() throws SQLException {
+        String SqlGet = "SELECT * FROM dvd";
+        PreparedStatement Prepare = connexion.prepareStatement(SqlGet);
+        ResultSet DvdResultSet = Prepare.executeQuery();
+        Vector<commonEntity> dvdOutput = new Vector<>();
+        while(DvdResultSet.next() ){
+            String ref = DvdResultSet.getString("titre") ;
+            dvdOutput.add(new Dvd(
+                    DvdResultSet.getString("reference"),
+                    DvdResultSet.getString("titre"),
+                    DvdResultSet.getBoolean("borrow"),
+                    DvdResultSet.getString("genreFilm"),
+                    DvdResultSet.getString("prod")
+                    ));
+            //Dvd dvd = new Dvd("Reference","titre",false,"genreFilm","production");
+        }
+
+    }
+
     public void update(int updateID, commonEntity object) throws SQLException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
 
         List<String> ListMethodString =  getListMethod(object);
@@ -87,7 +102,8 @@ public class DBManager {
     }
 
     /**
-     * Prepare a sql request from a string, and add every object from an arbitraty object given as parameter
+     * Prepare a sql request from a string, and add every property from an commonEntity object given as parameter
+     * if sql schema change, you need to change InitializeTables method of this class.
      * @param sqlString Sql statement to use in prepareStatement
      * @param object object to inject in the sql statment
      * @return PreparedStatement
@@ -148,5 +164,4 @@ public class DBManager {
         Tables.put("Livre", livre);
         Tables.put("magazine", magazine);
     }
-
 }

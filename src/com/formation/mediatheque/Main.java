@@ -53,17 +53,15 @@ public class Main {
         }
 
 
-/*
-        if (Parameters.getParameters().containsKey(CommandLineParameters.IMPORT_KEY) ) {
+
+        if (Parameters.getParametersMap().containsKey(CommandLineParameters.IMPORT_KEY) ) {
 
             ImportData(Parameters);
         }
-        else if (Parameters.getParameters().containsKey(CommandLineParameters.EXPORT_KEY)){
+        else if (Parameters.getParametersMap().containsKey(CommandLineParameters.EXPORT_KEY)){
 
             ExportData(Parameters);
         }
-
- */
 
     }
 

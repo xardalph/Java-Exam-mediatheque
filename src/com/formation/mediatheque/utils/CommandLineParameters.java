@@ -19,7 +19,7 @@ public class CommandLineParameters {
     public static final String DB_USER_KEY = "db.username";
     public static final String DB_PASSWORD_KEY = "db.password";
 
-    public final Map<String, String> parameters = new HashMap<>();
+    protected final Map<String, String> parameters = new HashMap<>();
 
 
     public CommandLineParameters(String[] args) {
@@ -34,6 +34,9 @@ public class CommandLineParameters {
         }
 
 
+    }
+    public final Map<String, String> getParametersMap(){
+        return this.parameters;
     }
 
     public String getParameters(String key) {
