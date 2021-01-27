@@ -33,11 +33,11 @@ public class Livre extends Aempruntable implements Serializable {
     @Override
     public String toString() {
         return "Livre{" +
-                "authorName='" + authorName + '\'' +
-                ", editor='" + editor + '\'' +
-                ", borrow=" + borrow +
+                "borrow=" + borrow +
                 ", reference='" + reference + '\'' +
                 ", titre='" + titre + '\'' +
+                ", authorName='" + authorName + '\'' +
+                ", editor='" + editor + '\'' +
                 '}';
     }
 }

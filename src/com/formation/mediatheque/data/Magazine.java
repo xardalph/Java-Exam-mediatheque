@@ -33,10 +33,10 @@ public class Magazine extends commonEntity implements Serializable {
     @Override
     public String toString() {
         return "Magazine{" +
-                "marque='" + marque + '\'' +
-                ", role='" + role + '\'' +
-                ", reference='" + reference + '\'' +
+                "reference='" + reference + '\'' +
                 ", titre='" + titre + '\'' +
+                ", marque='" + marque + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

@@ -27,4 +27,11 @@ public abstract class commonEntity implements Serializable {
         this.titre = titre;
     }
 
+    @Override
+    public String toString() {
+        return "commonEntity{" +
+                "reference='" + reference + '\'' +
+                ", titre='" + titre + '\'' +
+                '}';
+    }
 }

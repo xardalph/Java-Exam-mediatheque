@@ -33,11 +33,11 @@ public class Dvd extends Aempruntable implements Serializable {
     @Override
     public String toString() {
         return "Dvd{" +
-                "genreFilm='" + genreFilm + '\'' +
-                ", prod='" + prod + '\'' +
-                ", borrow=" + borrow +
+                "borrow=" + borrow +
                 ", reference='" + reference + '\'' +
                 ", titre='" + titre + '\'' +
+                ", genreFilm='" + genreFilm + '\'' +
+                ", prod='" + prod + '\'' +
                 '}';
     }
 }
