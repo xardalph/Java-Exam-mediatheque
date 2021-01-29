@@ -31,12 +31,12 @@ public class Main {
 
             if (Parameters.getParametersMap().containsKey(CommandLineParameters.IMPORT_KEY)) {
 
-                ImportData(Parameters, dbManager);
+                ImportData(Parameters, dbManager, logger);
             } else if (Parameters.getParametersMap().containsKey(CommandLineParameters.EXPORT_KEY)) {
-
-                ExportData(Parameters, dbManager);
+                ExportData(Parameters, dbManager, logger);
             }
             logger.Log.info("end of script");
+
         } catch (ParameterException e) {
             System.out.printf("Incorrect parameters : %s", e);
             exit(3);
@@ -56,9 +56,9 @@ public class Main {
     }
 
 
-    private static void ImportData(CommandLineParameters Parameters,  DBManager dbManager) throws IOException, ClassNotFoundException, InvocationTargetException, SQLException, IllegalAccessException, NoSuchMethodException {
+    private static void ImportData(CommandLineParameters Parameters,  DBManager dbManager, LogToFile logger) throws IOException, ClassNotFoundException, InvocationTargetException, SQLException, IllegalAccessException, NoSuchMethodException {
         Vector<commonEntity> importFromFile = ImportExport.importFromFile(Parameters.getImport());
-
+        logger.Log.info("number of object to import : " + importFromFile.size());
         for (commonEntity object : importFromFile) {
             dbManager.create(object);
         }
@@ -66,8 +66,10 @@ public class Main {
 
     }
 
-    private static void ExportData(CommandLineParameters Parameters, DBManager dbManager) throws SQLException, IOException, ClassNotFoundException {
+    private static void ExportData(CommandLineParameters Parameters, DBManager dbManager, LogToFile logger) throws SQLException, IOException, ClassNotFoundException {
         Vector<commonEntity> exported = ImportExport.createVector(dbManager);
+
+        logger.Log.info("number of object to import : " + exported.size());
         ImportExport.exportToFile(Parameters.getExport(), exported);
     }
 }
