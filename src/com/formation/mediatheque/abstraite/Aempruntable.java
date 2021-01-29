@@ -20,11 +20,11 @@ public abstract class Aempruntable extends commonEntity implements Serializable 
         this.borrow = borrow;
     }
 
-    public int getBorrow() {
+    public String getBorrow() {
         if (this.borrow){
-            return 1;
+            return "1";
         }
-        return 0;
+        return "0";
 
     }
 
