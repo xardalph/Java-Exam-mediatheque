@@ -31,11 +31,11 @@ public class Main {
 
             if (Parameters.getParametersMap().containsKey(CommandLineParameters.IMPORT_KEY)) {
                 logger.Log.info("start of import");
-                ImportData(Parameters, dbManager);
+                ImportData(Parameters, dbManager, logger);
                 logger.Log.info("end of import");
             } else if (Parameters.getParametersMap().containsKey(CommandLineParameters.EXPORT_KEY)) {
                 logger.Log.info("start of export");
-                ExportData(Parameters, dbManager);
+                ExportData(Parameters, dbManager, logger);
                 logger.Log.info("end of export");
             }
             logger.Log.info("end of script");
@@ -58,7 +58,7 @@ public class Main {
     }
 
 
-    private static void ImportData(CommandLineParameters Parameters,  DBManager dbManager) throws IOException, ClassNotFoundException, InvocationTargetException, SQLException, IllegalAccessException, NoSuchMethodException {
+    private static void ImportData(CommandLineParameters Parameters,  DBManager dbManager, LogToFile logger) throws IOException, ClassNotFoundException, InvocationTargetException, SQLException, IllegalAccessException, NoSuchMethodException {
         Vector<commonEntity> importFromFile = ImportExport.importFromFile(Parameters.getImport());
 
         for (commonEntity object : importFromFile) {
@@ -68,8 +68,9 @@ public class Main {
 
     }
 
-    private static void ExportData(CommandLineParameters Parameters, DBManager dbManager) throws SQLException, IOException, ClassNotFoundException {
+    private static void ExportData(CommandLineParameters Parameters, DBManager dbManager, LogToFile logger) throws SQLException, IOException, ClassNotFoundException {
         Vector<commonEntity> exported = ImportExport.createVector(dbManager);
+        logger.Log.info("number of object to import : " + exported.size());
         ImportExport.exportToFile(Parameters.getExport(), exported);
     }
 }
