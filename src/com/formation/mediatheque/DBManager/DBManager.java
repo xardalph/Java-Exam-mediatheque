@@ -44,8 +44,8 @@ public class DBManager {
 
 
     }
-    public void getAllDvd() throws SQLException {
-        String SqlGet = "SELECT * FROM dvd";
+    public Vector<commonEntity> getAllDvd() throws SQLException {
+        String SqlGet = "SELECT * FROM Dvd";
         PreparedStatement Prepare = connexion.prepareStatement(SqlGet);
         ResultSet DvdResultSet = Prepare.executeQuery();
         Vector<commonEntity> dvdOutput = new Vector<>();
@@ -60,7 +60,7 @@ public class DBManager {
                     ));
             //Dvd dvd = new Dvd("Reference","titre",false,"genreFilm","production");
         }
-
+    return dvdOutput;
     }
 
     public void update(int updateID, commonEntity object) throws SQLException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {

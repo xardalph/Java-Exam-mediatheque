@@ -9,6 +9,7 @@ import com.formation.mediatheque.utils.CommandLineParameters;
 import com.formation.mediatheque.utils.LogToFile;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import static java.lang.System.exit;
 
@@ -20,48 +21,41 @@ public class Main {
 
         CommandLineParameters Parameters = new CommandLineParameters(args);
 
+        Dvd dvd = new Dvd("Reference", "titre", false, "genreFilm", "production");
+        System.out.println(dvd.getReference());
+
         try {
             Parameters.assertParametersAreValid();
             Parameters.GetConfiguration();
+            LogToFile logger = new LogToFile(Parameters.getParameters(CommandLineParameters.LOG_KEY));
+            DBManager dbManager = new DBManager(Parameters);
+            dbManager.create(dvd);
+            dbManager.update(10, dvd);
+
+            if (Parameters.getParametersMap().containsKey(CommandLineParameters.IMPORT_KEY)) {
+
+                ImportData(Parameters);
+            } else if (Parameters.getParametersMap().containsKey(CommandLineParameters.EXPORT_KEY)) {
+
+                ExportData(Parameters, dbManager);
+            }
+
+
         } catch (ParameterException e) {
             System.out.printf("Incorrect parameters : %s", e);
             exit(3);
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.printf("can't acces parameter file : %s", e);
             exit(3);
         } catch (InvalidConfigurationFileException e) {
             System.out.printf("Invalid Configuration : %s", e);
             exit(3);
-        }
-        Dvd dvd = new Dvd("Reference","titre",false,"genreFilm","production");
-        System.out.println(dvd.getReference());
-
-        try {
-            LogToFile logger = new LogToFile(Parameters.getParameters(CommandLineParameters.LOG_KEY));
-            DBManager dbManager = new DBManager(Parameters);
-            dbManager.create(dvd);
-            dbManager.update(10, dvd);
-        }
-        catch(IOException e){
-            System.out.printf("Error openning file : %s", e);
-            exit(3);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.printf("UNKNOWN ERROR, please check : %s", e);
             e.printStackTrace();
             exit(3);
         }
 
-
-
-        if (Parameters.getParametersMap().containsKey(CommandLineParameters.IMPORT_KEY) ) {
-
-            ImportData(Parameters);
-        }
-        else if (Parameters.getParametersMap().containsKey(CommandLineParameters.EXPORT_KEY)){
-
-            ExportData(Parameters);
-        }
 
     }
 
@@ -70,7 +64,8 @@ public class Main {
 
     }
 
-    private static void ExportData(CommandLineParameters Parameters) {
+    private static void ExportData(CommandLineParameters Parameters, DBManager dbManager) throws SQLException {
+        dbManager.getAllDvd();
 
     }
 }
