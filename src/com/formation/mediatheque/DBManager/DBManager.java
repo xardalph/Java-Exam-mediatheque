@@ -6,7 +6,6 @@ import com.formation.mediatheque.data.Dvd;
 import com.formation.mediatheque.data.Livre;
 import com.formation.mediatheque.data.Magazine;
 import com.formation.mediatheque.utils.CommandLineParameters;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.*;
