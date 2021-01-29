@@ -30,11 +30,13 @@ public class Main {
             DBManager dbManager = new DBManager(Parameters);
 
             if (Parameters.getParametersMap().containsKey(CommandLineParameters.IMPORT_KEY)) {
-
+                logger.Log.info("start of import");
                 ImportData(Parameters, dbManager);
+                logger.Log.info("end of import");
             } else if (Parameters.getParametersMap().containsKey(CommandLineParameters.EXPORT_KEY)) {
-
+                logger.Log.info("start of export");
                 ExportData(Parameters, dbManager);
+                logger.Log.info("end of export");
             }
             logger.Log.info("end of script");
         } catch (ParameterException e) {
@@ -62,8 +64,6 @@ public class Main {
         for (commonEntity object : importFromFile) {
             dbManager.create(object);
         }
-
-
     }
 
     private static void ExportData(CommandLineParameters Parameters, DBManager dbManager) throws SQLException, IOException, ClassNotFoundException {
