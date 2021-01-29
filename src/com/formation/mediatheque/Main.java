@@ -36,7 +36,7 @@ public class Main {
 
                 ExportData(Parameters, dbManager);
             }
-
+            logger.Log.info("end of script");
         } catch (ParameterException e) {
             System.out.printf("Incorrect parameters : %s", e);
             exit(3);
