@@ -120,11 +120,8 @@ public class DBManager {
             String MethodName = "get" + ucfirst(ListMethod.get(i));
             Method method = object.getClass().getMethod(MethodName);
 
-            if (MethodName.equals("getBorrow")) {
-                Prepare.setString(i + 1, String.valueOf(method.invoke(object)));
-            } else {
-                Prepare.setString(i + 1, (String) method.invoke(object));
-            }
+            Prepare.setString(i + 1, (String) method.invoke(object));
+
         }
         return Prepare;
     }
