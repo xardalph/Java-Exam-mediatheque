@@ -1,5 +1,6 @@
 package com.formation.mediatheque.utils;
 
+import com.formation.mediatheque.DBManager.DBManager;
 import com.formation.mediatheque.abstraite.commonEntity;
 import com.formation.mediatheque.data.*;
 
@@ -13,6 +14,7 @@ import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.sql.SQLException;
 import java.util.Vector;
 
 
@@ -34,6 +36,15 @@ public class ImportExport {
         out2.writeObject(commonEntityList);
         out2.close();
 
+    }
+    public static Vector<commonEntity> createVector(DBManager dbManager) throws IOException, ClassNotFoundException, SQLException {
+        Vector<commonEntity> vector = new Vector<>();
+        vector.addAll(dbManager.getAllDvd());
+        vector.addAll(dbManager.getAllCd());
+        vector.addAll(dbManager.getAllLivre());
+        vector.addAll(dbManager.getAllMagazine());
+
+        return vector;
     }
 
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {

@@ -13,31 +13,31 @@ import java.util.Properties;
 public class CommandLineParameters {
 
 
-    public String getImportKey() {
+    public String getImport() {
         return parameters.get(IMPORT_KEY);
     }
 
-    public String getExportKey() {
+    public String getExport() {
         return parameters.get(EXPORT_KEY);
     }
 
-    public String getDbFileKey() {
+    public String getDbFile() {
         return parameters.get(DB_FILE_KEY);
     }
 
-    public String getLogKey() {
+    public String getLog() {
         return parameters.get(LOG_KEY);
     }
 
-    public String getDbUrlKey() {
+    public String getDbUrl() {
         return parameters.get(DB_URL_KEY);
     }
 
-    public String getDbUserKey() {
+    public String getDbUser() {
         return parameters.get(DB_USER_KEY);
     }
 
-    public String getDbPasswordKey() {
+    public String getDbPassword() {
         return parameters.get(DB_PASSWORD_KEY);
     }
 
@@ -50,7 +50,6 @@ public class CommandLineParameters {
     public static final String DB_PASSWORD_KEY = "db.password";
 
     protected final Map<String, String> parameters = new HashMap<>();
-
 
     public CommandLineParameters(String[] args) {
         String lastKey = null;
