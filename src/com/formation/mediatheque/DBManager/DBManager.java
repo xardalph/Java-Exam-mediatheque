@@ -44,13 +44,13 @@ public class DBManager {
 
 
     }
+
     public Vector<commonEntity> getAllDvd() throws SQLException {
         String SqlGet = "SELECT * FROM Dvd";
         PreparedStatement Prepare = connexion.prepareStatement(SqlGet);
         ResultSet DvdResultSet = Prepare.executeQuery();
         Vector<commonEntity> dvdOutput = new Vector<>();
         while(DvdResultSet.next() ){
-            String ref = DvdResultSet.getString("titre") ;
             dvdOutput.add(new Dvd(
                     DvdResultSet.getString("reference"),
                     DvdResultSet.getString("titre"),
@@ -58,7 +58,6 @@ public class DBManager {
                     DvdResultSet.getString("genreFilm"),
                     DvdResultSet.getString("prod")
                     ));
-            //Dvd dvd = new Dvd("Reference","titre",false,"genreFilm","production");
         }
     return dvdOutput;
     }
