@@ -61,6 +61,7 @@ public class Main {
     private static void ImportData(CommandLineParameters Parameters,  DBManager dbManager, LogToFile logger) throws IOException, ClassNotFoundException, InvocationTargetException, SQLException, IllegalAccessException, NoSuchMethodException {
         Vector<commonEntity> importFromFile = ImportExport.importFromFile(Parameters.getImport());
 
+        logger.Log.info("number of object to import : " + importFromFile.size());
         for (commonEntity object : importFromFile) {
             dbManager.create(object);
         }
