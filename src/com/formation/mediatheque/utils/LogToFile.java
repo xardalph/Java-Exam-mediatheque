@@ -7,9 +7,10 @@ import java.util.logging.SimpleFormatter;
 
 public class LogToFile {
     public Logger Log;
+
     public LogToFile(String logPath) throws IOException {
 
-        FileHandler handler = new FileHandler(logPath, true );
+        FileHandler handler = new FileHandler(logPath, true);
         SimpleFormatter formatter = new SimpleFormatter();
         handler.setFormatter(formatter);
 

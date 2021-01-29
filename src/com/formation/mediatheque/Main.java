@@ -11,7 +11,9 @@ import com.formation.mediatheque.utils.ImportExport;
 import com.formation.mediatheque.utils.LogToFile;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.Vector;
 
 import static java.lang.System.exit;
@@ -29,7 +31,7 @@ public class Main {
 
             if (Parameters.getParametersMap().containsKey(CommandLineParameters.IMPORT_KEY)) {
 
-                ImportData(Parameters);
+                ImportData(Parameters, dbManager);
             } else if (Parameters.getParametersMap().containsKey(CommandLineParameters.EXPORT_KEY)) {
 
                 ExportData(Parameters, dbManager);
@@ -54,13 +56,19 @@ public class Main {
     }
 
 
-    private static void ImportData(CommandLineParameters Parameters) {
+    private static void ImportData(CommandLineParameters Parameters,  DBManager dbManager) throws IOException, ClassNotFoundException, InvocationTargetException, SQLException, IllegalAccessException, NoSuchMethodException {
+        Vector<commonEntity> importFromFile = ImportExport.importFromFile(Parameters.getImport());
+
+        for (commonEntity object : importFromFile) {
+            dbManager.create(object);
+        }
+
 
     }
 
     private static void ExportData(CommandLineParameters Parameters, DBManager dbManager) throws SQLException, IOException, ClassNotFoundException {
         Vector<commonEntity> exported = ImportExport.createVector(dbManager);
-        ImportExport.exportToFile(Parameters.getExportKey(), exported);
+        ImportExport.exportToFile(Parameters.getExport(), exported);
     }
 }
 
