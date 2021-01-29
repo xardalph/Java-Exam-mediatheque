@@ -11,6 +11,36 @@ import java.util.Map;
 import java.util.Properties;
 
 public class CommandLineParameters {
+
+
+    public String getImportKey() {
+        return parameters.get(IMPORT_KEY);
+    }
+
+    public String getExportKey() {
+        return parameters.get(EXPORT_KEY);
+    }
+
+    public String getDbFileKey() {
+        return parameters.get(DB_FILE_KEY);
+    }
+
+    public String getLogKey() {
+        return parameters.get(LOG_KEY);
+    }
+
+    public String getDbUrlKey() {
+        return parameters.get(DB_URL_KEY);
+    }
+
+    public String getDbUserKey() {
+        return parameters.get(DB_USER_KEY);
+    }
+
+    public String getDbPasswordKey() {
+        return parameters.get(DB_PASSWORD_KEY);
+    }
+
     public static final String IMPORT_KEY = "--import";
     public static final String EXPORT_KEY = "--export";
     public static final String DB_FILE_KEY = "--db";

@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import static java.lang.System.exit;
+import static java.lang.System.setOut;
 
 public class Main {
 
@@ -27,6 +28,7 @@ public class Main {
         try {
             Parameters.assertParametersAreValid();
             Parameters.GetConfiguration();
+            System.out.println(Parameters.getImportKey());
             LogToFile logger = new LogToFile(Parameters.getParameters(CommandLineParameters.LOG_KEY));
             DBManager dbManager = new DBManager(Parameters);
             dbManager.create(dvd);
@@ -66,6 +68,9 @@ public class Main {
 
     private static void ExportData(CommandLineParameters Parameters, DBManager dbManager) throws SQLException {
         dbManager.getAllDvd();
+        //dbManager.getAllCd();
+        //dbManager.getAllLivre();
+        //dbManager.getAllMagazine();
 
     }
 }

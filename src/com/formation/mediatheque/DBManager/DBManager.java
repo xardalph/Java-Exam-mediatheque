@@ -1,7 +1,10 @@
 package com.formation.mediatheque.DBManager;
 
 import com.formation.mediatheque.abstraite.commonEntity;
+import com.formation.mediatheque.data.Cd;
 import com.formation.mediatheque.data.Dvd;
+import com.formation.mediatheque.data.Livre;
+import com.formation.mediatheque.data.Magazine;
 import com.formation.mediatheque.utils.CommandLineParameters;
 
 import java.lang.reflect.InvocationTargetException;
@@ -49,9 +52,9 @@ public class DBManager {
         String SqlGet = "SELECT * FROM Dvd";
         PreparedStatement Prepare = connexion.prepareStatement(SqlGet);
         ResultSet DvdResultSet = Prepare.executeQuery();
-        Vector<commonEntity> dvdOutput = new Vector<>();
+        Vector<commonEntity> DvdOutput = new Vector<>();
         while(DvdResultSet.next() ){
-            dvdOutput.add(new Dvd(
+            DvdOutput.add(new Dvd(
                     DvdResultSet.getString("reference"),
                     DvdResultSet.getString("titre"),
                     DvdResultSet.getBoolean("borrow"),
@@ -59,7 +62,57 @@ public class DBManager {
                     DvdResultSet.getString("prod")
                     ));
         }
-    return dvdOutput;
+    return DvdOutput;
+    }
+
+    public Vector<commonEntity> getAllCd() throws SQLException {
+        String SqlGet = "SELECT * FROM Cd";
+        PreparedStatement Prepare = connexion.prepareStatement(SqlGet);
+        ResultSet CdResultSet = Prepare.executeQuery();
+        Vector<commonEntity> CdOutput = new Vector<>();
+        while(CdResultSet.next() ){
+            CdOutput.add(new Cd(
+                    CdResultSet.getString("reference"),
+                    CdResultSet.getString("titre"),
+                    CdResultSet.getBoolean("borrow"),
+                    CdResultSet.getString("genreMusic"),
+                    CdResultSet.getString("label")
+            ));
+        }
+        return CdOutput;
+    }
+
+    public Vector<commonEntity> getAllLivre() throws SQLException {
+        String SqlGet = "SELECT * FROM Livre";
+        PreparedStatement Prepare = connexion.prepareStatement(SqlGet);
+        ResultSet LivreResultSet = Prepare.executeQuery();
+        Vector<commonEntity> LivreOutput = new Vector<>();
+        while(LivreResultSet.next() ){
+            LivreOutput.add(new Livre(
+                    LivreResultSet.getString("reference"),
+                    LivreResultSet.getString("titre"),
+                    LivreResultSet.getBoolean("borrow"),
+                    LivreResultSet.getString("authorName"),
+                    LivreResultSet.getString("editor")
+            ));
+        }
+        return LivreOutput;
+    }
+
+    public Vector<commonEntity> getAllMagazine() throws SQLException {
+        String SqlGet = "SELECT * FROM Magazine";
+        PreparedStatement Prepare = connexion.prepareStatement(SqlGet);
+        ResultSet MagazineResultSet = Prepare.executeQuery();
+        Vector<commonEntity> MagazineOutput = new Vector<>();
+        while(MagazineResultSet.next() ){
+            MagazineOutput.add(new Magazine(
+                    MagazineResultSet.getString("reference"),
+                    MagazineResultSet.getString("titre"),
+                    MagazineResultSet.getString("marque"),
+                    MagazineResultSet.getString("role")
+            ));
+        }
+        return MagazineOutput;
     }
 
     public void update(int updateID, commonEntity object) throws SQLException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
