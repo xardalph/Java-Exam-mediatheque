@@ -6,6 +6,7 @@ import com.formation.mediatheque.data.Dvd;
 import com.formation.mediatheque.data.Livre;
 import com.formation.mediatheque.data.Magazine;
 import com.formation.mediatheque.utils.CommandLineParameters;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.*;
@@ -38,7 +39,13 @@ public class DBManager {
         String ListMethodString = String.join(", ", getListMethod(object));
         sqlCreate.append(ListMethodString);
 
-        sqlCreate.append(") VALUES (?,?,?,?,?) ");
+        if (getClassName(object).equals("Magazine")){
+            sqlCreate.append(") VALUES (?,?,?,?) ");
+        }
+        else{
+            sqlCreate.append(") VALUES (?,?,?,?,?) ");
+        }
+
         String SqlStatement = sqlCreate.toString();
 
         PreparedStatement Prepare = addAllParameter(SqlStatement, object);
@@ -210,6 +217,6 @@ public class DBManager {
         Tables.put("Cd", cd);
         Tables.put("Dvd", dvd);
         Tables.put("Livre", livre);
-        Tables.put("magazine", magazine);
+        Tables.put("Magazine", magazine);
     }
 }

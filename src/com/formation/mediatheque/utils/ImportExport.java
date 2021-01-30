@@ -20,10 +20,9 @@ import java.util.Vector;
 
 public class ImportExport {
 
-
     public static Vector<commonEntity> importFromFile(String fileName) throws IOException, ClassNotFoundException {
         ObjectInputStream in2 = new ObjectInputStream(
-                Files.newInputStream(Paths.get(fileName+"2.txt"), StandardOpenOption.READ));
+                Files.newInputStream(Paths.get(fileName), StandardOpenOption.READ));
 
         Vector<commonEntity> fileContent = (Vector<commonEntity>)in2.readObject();
         return fileContent;
