@@ -1,32 +1,3 @@
-
-
-
-
-///////////Je sais pas si c'est bon mais j'avais commencé ça hier du coup
-
-Alors, je ne pense pas que nous puissions faire une table Borrow car une clé étrangere ne peux pas pointer vers plusieurs tables
-hors nous avons des table différentes pour chaque entité
-2 options :
- - mettre une table emprunter par type
- - mettre la propriété emprunter dans les tables
-
-le problème de la seconde solution est que nous n'avons pas l'historique des emprunt, mais je ne pense pas qu'il soit nécessaire pour le projet,
-je vais commencer à l'implémenter comme ca
-
-D'un point de vue plus réaliste si j'avais fait cette application pour un vrai client j'aurait mis tous les cd/dvd dans une seule
-table avec une propriété pour définir le type je pense, du coup ont aurait pas eu ce pb, mais quand j'en
- ai parlé avec lui il avait l'air motivé qu'on fasse une table par objets :/
-
-
-
-
-
-
-notes
-//   FOREIGN KEY (name) REFERENCES toto(name)
-//   INSERT INTO cd(name,reference,genreMusic,label) VALUES ("XEU","123AA123","Rap","CapitolRecords");
-
-    
 CREATE TABLE Cd (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
     titre varchar(100),
@@ -61,9 +32,6 @@ CREATE TABLE Magazine (
     marque varchar(100),
     role varchar(100)
     );
-
-
-
 
 INSERT INTO Cd(titre,reference,genreMusic,label) VALUES ("XEU","123AA123","Rap","CapitolRecords");
 INSERT INTO Cd(titre,reference,genreMusic,label) VALUES ("Recital 1961","123EAB123","Piaf","ColumbiaRecords");

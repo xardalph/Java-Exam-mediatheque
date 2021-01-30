@@ -4,8 +4,6 @@ import com.formation.mediatheque.Exceptions.InvalidConfigurationFileException;
 import com.formation.mediatheque.Exceptions.ParameterException;
 import com.formation.mediatheque.DBManager.DBManager;
 import com.formation.mediatheque.abstraite.commonEntity;
-import com.formation.mediatheque.data.Cd;
-import com.formation.mediatheque.data.Dvd;
 import com.formation.mediatheque.utils.CommandLineParameters;
 import com.formation.mediatheque.utils.ImportExport;
 import com.formation.mediatheque.utils.LogToFile;
@@ -13,7 +11,6 @@ import com.formation.mediatheque.utils.LogToFile;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.Vector;
 
 import static java.lang.System.exit;

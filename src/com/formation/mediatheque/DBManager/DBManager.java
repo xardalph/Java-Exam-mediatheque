@@ -39,6 +39,7 @@ public class DBManager {
         String ListMethodString = String.join(", ", getListMethod(object));
         sqlCreate.append(ListMethodString);
 
+        // magazine do not have borrow column, so we need to put one parameter less
         if (getClassName(object).equals("Magazine")){
             sqlCreate.append(") VALUES (?,?,?,?) ");
         }
