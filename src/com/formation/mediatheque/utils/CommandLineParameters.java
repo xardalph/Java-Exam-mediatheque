@@ -63,6 +63,11 @@ public class CommandLineParameters {
         }
     }
 
+    /**
+     * Recupere la configuration de la base
+     * @throws IOException
+     * @throws InvalidConfigurationFileException
+     */
     public void GetConfiguration() throws IOException, InvalidConfigurationFileException {
 
         InputStream input = new FileInputStream(this.getParameters(CommandLineParameters.DB_FILE_KEY));
@@ -80,6 +85,7 @@ public class CommandLineParameters {
 
     }
 
+    //Guetters
     public String getImport() {
         return parameters.get(IMPORT_KEY);
     }
