@@ -22,9 +22,9 @@ public class DBManager {
         InitializeTables();
 
         this.connexion = DriverManager.getConnection(
-                parameters.getParameters(CommandLineParameters.DB_URL_KEY),
-                parameters.getParameters(CommandLineParameters.DB_USER_KEY),
-                parameters.getParameters(CommandLineParameters.DB_PASSWORD_KEY)
+                parameters.getDbUrl(),
+                parameters.getDbUser(),
+                parameters.getDbPassword()
         );
     }
 

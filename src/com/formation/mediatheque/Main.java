@@ -22,19 +22,21 @@ public class Main {
         try {
             Parameters.assertParametersAreValid();
             Parameters.GetConfiguration();
-            LogToFile logger = new LogToFile(Parameters.getParameters(CommandLineParameters.LOG_KEY));
+            LogToFile logger = new LogToFile(Parameters.getLog());
             DBManager dbManager = new DBManager(Parameters);
 
-            if (Parameters.getParametersMap().containsKey(CommandLineParameters.IMPORT_KEY)) {
+            if (Parameters.getImport() != null) {
                 logger.Log.info("start of import");
                 ImportData(Parameters, dbManager, logger);
                 logger.Log.info("end of import");
-            } else if (Parameters.getParametersMap().containsKey(CommandLineParameters.EXPORT_KEY)) {
+
+            } else if (Parameters.getExport() != null) {
                 logger.Log.info("start of export");
                 ExportData(Parameters, dbManager, logger);
                 logger.Log.info("end of export");
             }
             logger.Log.info("end of script");
+
         } catch (ParameterException e) {
             System.out.printf("Incorrect parameters : %s", e);
             exit(3);
@@ -64,7 +66,7 @@ public class Main {
 
     private static void ExportData(CommandLineParameters Parameters, DBManager dbManager, LogToFile logger) throws SQLException, IOException, ClassNotFoundException {
         Vector<commonEntity> exported = ImportExport.createVector(dbManager);
-        logger.Log.info("number of object to import : " + exported.size());
+        logger.Log.info("number of object to export : " + exported.size());
         ImportExport.exportToFile(Parameters.getExport(), exported);
     }
 }
