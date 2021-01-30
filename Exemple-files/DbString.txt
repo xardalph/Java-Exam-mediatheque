@@ -1,6 +1,3 @@
 db.username=dev
-db.password=VerryGoodPasswordToUseInTestEnvironnement
+db.password=StrongPassword
 db.url=jdbc:mysql://127.0.0.1/Dev
-
-
-'INSERT INTO Dvd (titre, reference, genreFilm, prod, borrow, ) VALUES ('titre','Reference','genreFilms','prod' ,true) '
